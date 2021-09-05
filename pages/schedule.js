@@ -1,8 +1,7 @@
-
 export default function schedule() {
-    return (
-        <div>
-            schedule
-        </div>
-    )
+  return (
+    <div>
+      schedule
+    </div>
+  )
 }

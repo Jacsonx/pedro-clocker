@@ -12,14 +12,14 @@ import {
   FormHelperText,
   InputGroup,
   InputLeftAddon
-  
 } from "@chakra-ui/react"
 
-import {Logo} from './../components';
-import {app} from '../config/firebase/configFIrebase'
-import * as Auth from "firebase/auth";
-const auth = new Auth();
+import { Logo } from './../components';
+import { app }  from '../config/firebase/configFIrebase';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
+//that setup is using web 9.0 firebase version
+const auth = getAuth(app); //instance auth with app firebase configs
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('E-mail inválido').required('Preenchimento obrigatório'),
@@ -37,10 +37,10 @@ export default function Home() {
     handleSubmit,
     isSubmitting
   } = useFormik({
-    onSubmit: async (values,form) => {
+    onSubmit: async (values, form) => {
       try{
-        const user = await auth.
-        console.log(user)
+        const user = await createUserWithEmailAndPassword(auth, values.email, values.password);
+        console.log(user);
       } catch (error){
         console.log('ERROR:', error)
       }

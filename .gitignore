@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#package-lock remove for version compatibility of node
+.package-lock.json
+
 # testing
 /coverage
 
